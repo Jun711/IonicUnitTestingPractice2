@@ -20,6 +20,7 @@ export class Product {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Product');
+		this.productsService.load();
   }
 
 }
