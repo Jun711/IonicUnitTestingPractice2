@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Products } from '../../providers/products'
+import { Wishlist } from '../wishlist/wishlist';
 
 /**
  * Generated class for the Product page.
@@ -21,6 +22,12 @@ export class Product {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Product');
 		this.productsService.load();
+  }
+
+   launchWishlist() {
+ 
+    this.navCtrl.push(Wishlist);
+ 
   }
 
 }

@@ -4,7 +4,7 @@ import { DebugElement } from '@angular/core';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { Product } from './product';
-import { WishlistPage } from '../wishlist/wishlist';
+import { Wishlist } from '../wishlist/wishlist';
 import { Products } from '../../providers/products';
 import { ProductsMock, NavMock } from '../../mocks';
  
@@ -86,7 +86,7 @@ describe('Page: Product Page', () => {
 
       de.triggerEventHandler('click', null);
 
-      expect(navCtrl.push).toHaveBeenCalledWith(WishlistPage);
+      expect(navCtrl.push).toHaveBeenCalledWith(Wishlist);
 
     });
 });
