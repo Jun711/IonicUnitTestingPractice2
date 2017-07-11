@@ -4,8 +4,9 @@ import { DebugElement } from '@angular/core';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { Product } from './product';
+import { WishlistPage } from '../wishlist/wishlist';
 import { Products } from '../../providers/products';
-import { ProductsMock } from '../../mocks';
+import { ProductsMock, NavMock } from '../../mocks';
  
 let comp: Product;
 let fixture: ComponentFixture<Product>;
@@ -21,7 +22,10 @@ describe('Page: Product Page', () => {
             declarations: [MyApp, Product],
  
             providers: [
-                NavController, 
+                {
+                    provide: NavController,
+                    useClass: NavMock
+                },
                 {
                     provide: Products,
                     useClass: ProductsMock
@@ -72,6 +76,17 @@ describe('Page: Product Page', () => {
         expect(el.textContent).toContain(firstProduct.price);
  
     });
- 
- 
+     
+    it('should be able to launch wishlist page', () => {
+    
+      let navCtrl = fixture.debugElement.injector.get(NavController);
+      spyOn(navCtrl, 'push');
+
+      de = fixture.debugElement.query(By.css('ion-buttons button'));
+
+      de.triggerEventHandler('click', null);
+
+      expect(navCtrl.push).toHaveBeenCalledWith(WishlistPage);
+
+    });
 });
