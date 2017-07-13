@@ -89,4 +89,21 @@ describe('Page: Product Page', () => {
       expect(navCtrl.push).toHaveBeenCalledWith(Wishlist);
 
     });
+
+    it('should add product to wishlist when add to wishlist button clicked', () => {
+ 
+        let wishlistService = fixture.debugElement.injector.get(WishlistService);
+        spyOn(wishlistService, 'addProduct');
+     
+        let productsService = fixture.debugElement.injector.get(Products);
+        let firstProduct = productsService.products[0];
+     
+        fixture.detectChanges();
+     
+        de = fixture.debugElement.query(By.css('ion-item-sliding button'));
+        de.triggerEventHandler('click', null);
+     
+        expect(wishlistService.addProduct).toHaveBeenCalledWith(firstProduct);
+     
+    });
 });
