@@ -5,8 +5,9 @@ import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { Product } from './product';
 import { Wishlist } from '../wishlist/wishlist';
+import { WishlistService } from '../../providers/wishlist-service';
 import { Products } from '../../providers/products';
-import { ProductsMock, NavMock } from '../../mocks';
+import { ProductsMock, NavMock, WishlistServiceMock } from '../../mocks';
  
 let comp: Product;
 let fixture: ComponentFixture<Product>;
@@ -29,6 +30,10 @@ describe('Page: Product Page', () => {
                 {
                     provide: Products,
                     useClass: ProductsMock
+                },
+                {
+                    provide: WishlistService,
+                    useClass: WishlistServiceMock
                 }
             ],
  
