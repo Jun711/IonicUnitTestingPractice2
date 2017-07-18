@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Products } from '../../providers/products'
 import { Wishlist } from '../wishlist/wishlist';
+import { WishlistService } from '../../providers/wishlist-service';
 
 /**
  * Generated class for the Product page.
@@ -16,7 +17,9 @@ import { Wishlist } from '../wishlist/wishlist';
 })
 export class Product {
 
-	constructor(public navCtrl: NavController, public productsService: Products) {
+	constructor(public navCtrl: NavController, 
+              public productsService: Products,
+              public wishlistService: WishlistService) {
   }
 
   ionViewDidLoad() {
@@ -24,10 +27,11 @@ export class Product {
 		this.productsService.load();
   }
 
-   launchWishlist() {
- 
+  launchWishlist() {
     this.navCtrl.push(Wishlist);
- 
   }
 
+  addToWishlist(product){
+    this.wishlistService.addProduct(product);
+  }
 }

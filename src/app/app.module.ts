@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Product } from '../pages/product/product';
 import { Wishlist } from '../pages/wishlist/wishlist';
+import { WishlistService } from '../providers/wishlist-service';
 import { Products } from '../providers/products';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { Products } from '../providers/products';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Products
+    Products,
+    WishlistService
   ]
 })
 export class AppModule {}
