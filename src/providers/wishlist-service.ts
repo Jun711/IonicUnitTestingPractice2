@@ -10,13 +10,23 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WishlistService {
 	products: any[] = [];
-	
+
   constructor() {
     console.log('Hello WishlistService Provider');
   }
 
   addProduct(product: Object): void {
-		this.products.push(product);
+		if (!(this.products.indexOf(product) > -1)) {
+			this.products.push(product);
+		}
+	}
+
+	deleteProduct(product: Object): void {
+		let index = this.products.indexOf(product);
+
+		if (index > -1) {
+			this.products.splice(index, 1);
+		}
 	}
 
 }
