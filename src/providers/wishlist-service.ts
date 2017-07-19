@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -10,9 +9,14 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class WishlistService {
-
-  constructor(public http: Http) {
+	products: any[] = [];
+	
+  constructor() {
     console.log('Hello WishlistService Provider');
   }
+
+  addProduct(product: Object): void {
+		this.products.push(product);
+	}
 
 }
