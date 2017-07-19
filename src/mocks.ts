@@ -36,7 +36,6 @@ export class NavMock {
   public getActive(): any {
     return {
       'instance': {
-        'model': 'something',
       },
     };
   }

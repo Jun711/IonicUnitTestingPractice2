@@ -28,5 +28,4 @@ export class WishlistService {
 			this.products.splice(index, 1);
 		}
 	}
-
 }
